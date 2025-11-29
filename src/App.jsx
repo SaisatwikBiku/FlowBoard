@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import Toolbar from "./components/Toolbar.jsx";
+import Whiteboard from "./components/Whiteboard.jsx";
+import { LANGUAGES } from "./i18n.js";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [tool, setTool] = useState("pen");
+  const [color, setColor] = useState("#000000");
+  const [lang, setLang] = useState(LANGUAGES.EN);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="app-root">
+      <header className="top-bar">
+        <span className="logo">FlowBoard</span>
 
-export default App
+        <Toolbar tool={tool} setTool={setTool} setColor={setColor} lang={lang} />
+
+        <div className="lang-switcher">
+          <span className="lang-label">
+            {lang === LANGUAGES.EN ? "Language:" : "Sprache:"}
+          </span>
+
+          <button
+            onClick={() => setLang(LANGUAGES.EN)}
+            className={`lang-btn ${lang === LANGUAGES.EN ? "active" : ""}`}
+          >
+            EN
+          </button>
+
+          <button
+            onClick={() => setLang(LANGUAGES.DE)}
+            className={`lang-btn ${lang === LANGUAGES.DE ? "active" : ""}`}
+          >
+            DE
+          </button>
+        </div>
+      </header>
+
+      <Whiteboard tool={tool} color={color} lang={lang} />
+    </div>
+  );
+}
