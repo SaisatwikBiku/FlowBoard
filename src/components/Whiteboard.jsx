@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Stage, Layer, Line, Rect, Text, Group } from "react-konva";
 import { t } from "../i18n.js";
 
-export default function Whiteboard({ tool, color, lang }) {
+export default function Whiteboard({ tool, color, lang, brushSize }) {
   const [lines, setLines] = useState([]);
   const [notes, setNotes] = useState([]);
   const [shapes, setShapes] = useState([]);
@@ -23,7 +23,7 @@ export default function Whiteboard({ tool, color, lang }) {
           tool,
           color: tool === "eraser" ? "#ffffff" : color,
           points: [pos.x, pos.y],
-          strokeWidth: tool === "eraser" ? 20 : 3,
+          strokeWidth: brushSize,
         },
       ]);
     }
@@ -37,7 +37,7 @@ export default function Whiteboard({ tool, color, lang }) {
           y: pos.y,
           width: 150,
           height: 150,
-          text: "Note",
+          text: t(lang, "note"),
           color: "#ffeb3b",
         },
       ]);
@@ -70,6 +70,12 @@ export default function Whiteboard({ tool, color, lang }) {
     isDrawing.current = false;
   };
 
+  const handleClearBoard = () => {
+    setLines([]);
+    setNotes([]);
+    setShapes([]);
+  };
+
   const handleAddRectangle = () => {
     setShapes((prev) => [
       ...prev,
@@ -90,6 +96,9 @@ export default function Whiteboard({ tool, color, lang }) {
   return (
     <div className="board-wrapper">
       <div className="board-top-controls">
+        <button className="clear-btn" onClick={handleClearBoard}>
+          Clear Board
+        </button>
         <button className="shape-btn" onClick={handleAddRectangle}>
           {t(lang, "addRectangle")}
         </button>

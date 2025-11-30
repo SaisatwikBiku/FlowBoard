@@ -12,6 +12,8 @@ const translations = {
     language: "Language",
     english: "English",
     german: "German",
+    colorPicker: "Color picker",
+    note: "Note",
   },
   de: {
     pen: "Stift",
@@ -21,6 +23,8 @@ const translations = {
     language: "Sprache",
     english: "Englisch",
     german: "Deutsch",
+    colorPicker: "Farbauswahl",
+    note: "Notiz",
   },
 };
 

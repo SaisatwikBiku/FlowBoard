@@ -7,13 +7,21 @@ export default function App() {
   const [tool, setTool] = useState("pen");
   const [color, setColor] = useState("#000000");
   const [lang, setLang] = useState(LANGUAGES.EN);
+  const [brushSize, setBrushSize] = useState(3);
 
   return (
     <div className="app-root">
       <header className="top-bar">
         <span className="logo">FlowBoard</span>
 
-        <Toolbar tool={tool} setTool={setTool} setColor={setColor} lang={lang} />
+        <Toolbar
+          tool={tool}
+          setTool={setTool}
+          setColor={setColor}
+          lang={lang}
+          brushSize={brushSize}
+          setBrushSize={setBrushSize}
+        />
 
         <div className="lang-switcher">
           <span className="lang-label">
@@ -36,7 +44,12 @@ export default function App() {
         </div>
       </header>
 
-      <Whiteboard tool={tool} color={color} lang={lang} />
+      <Whiteboard
+        tool={tool}
+        color={color}
+        lang={lang}
+        brushSize={brushSize}
+      />
     </div>
   );
 }
