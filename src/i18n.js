@@ -14,6 +14,7 @@ const translations = {
     german: "German",
     colorPicker: "Color picker",
     note: "Note",
+    clearBoard: "Clear Board",
   },
   de: {
     pen: "Stift",
@@ -25,6 +26,7 @@ const translations = {
     german: "Deutsch",
     colorPicker: "Farbauswahl",
     note: "Notiz",
+    clearBoard: "Board löschen",
   },
 };
 

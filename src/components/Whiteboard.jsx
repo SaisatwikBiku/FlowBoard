@@ -97,7 +97,7 @@ export default function Whiteboard({ tool, color, lang, brushSize }) {
     <div className="board-wrapper">
       <div className="board-top-controls">
         <button className="clear-btn" onClick={handleClearBoard}>
-          Clear Board
+          {t(lang, "clearBoard")}
         </button>
         <button className="shape-btn" onClick={handleAddRectangle}>
           {t(lang, "addRectangle")}
