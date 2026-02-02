@@ -9,7 +9,7 @@ export default function Whiteboard({ tool, color, lang, brushSize }) {
 
   const isDrawing = useRef(false);
 
-  const handleMouseDown = (e) => {
+  const handlePointerDown = (e) => {
     const stage = e.target.getStage();
     const pos = stage.getPointerPosition();
     if (!pos) return;
@@ -44,7 +44,7 @@ export default function Whiteboard({ tool, color, lang, brushSize }) {
     }
   };
 
-  const handleMouseMove = (e) => {
+  const handlePointerMove = (e) => {
     if (!isDrawing.current) return;
 
     const stage = e.target.getStage();
@@ -66,7 +66,7 @@ export default function Whiteboard({ tool, color, lang, brushSize }) {
     });
   };
 
-  const handleMouseUp = () => {
+  const handlePointerUp = () => {
     isDrawing.current = false;
   };
 
@@ -126,11 +126,12 @@ export default function Whiteboard({ tool, color, lang, brushSize }) {
       <Stage
         width={stageWidth}
         height={stageHeight}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerLeave={handlePointerUp}
         className="stage"
-        style={{ cursor: getCursor() }}
+        style={{ cursor: getCursor(), touchAction: "none" }}
       >
         <Layer>
           {lines.map((line, i) => (

@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -8,6 +9,9 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
   background: #f0f2f5;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .app-root {
@@ -154,4 +158,103 @@ body {
 
 .stage {
   background: #ffffff;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .top-bar {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .logo {
+    font-size: 16px;
+    width: 100%;
+    text-align: left;
+    padding: 4px 0;
+  }
+
+  .toolbar {
+    flex: 1;
+    gap: 4px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tool-btn {
+    padding: 8px 10px;
+    font-size: 0;
+    min-width: 40px;
+    justify-content: center;
+  }
+
+  .tool-btn svg {
+    margin: 0;
+  }
+
+  .size-control {
+    display: none;
+  }
+
+  .color-picker {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+  }
+
+  .lang-switcher {
+    gap: 4px;
+  }
+
+  .lang-label {
+    display: none;
+  }
+
+  .lang-btn {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .board-top-controls {
+    padding: 6px 8px;
+  }
+
+  .clear-btn,
+  .shape-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+    flex: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-bar {
+    padding: 6px;
+  }
+
+  .toolbar {
+    gap: 2px;
+  }
+
+  .tool-btn {
+    padding: 6px 8px;
+    min-width: 36px;
+  }
+
+  .color-picker {
+    width: 36px;
+    height: 36px;
+  }
+
+  .board-top-controls {
+    gap: 4px;
+  }
+
+  .clear-btn,
+  .shape-btn {
+    font-size: 11px;
+    padding: 6px 8px;
+  }
 }
